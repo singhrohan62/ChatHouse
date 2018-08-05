@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client'
 import './App.css';
-import houses from'./config/houses';
+import chatrooms from'./config/chatrooms';
 
 
 
@@ -37,13 +37,18 @@ class App extends Component {
       
     })
     return (
-      <div className="App">
-        
-            <button onClick = {() => this.setColor('blue')}>Change to Blue</button>
-            <button onClick = {() => this.setColor('red')}>Change to Red</button>
-
-            <p>houses.name</p>
-        
+      <div>    
+          <div className="App">            
+                <button onClick = {() => this.setColor('blue')}>Change to Blue</button>
+                <button onClick = {() => this.setColor('red')}>Change to Red</button>
+                <ul>
+                    {
+                     chatrooms.map(function (room) {
+                      return <li>{room.name}</li>
+                    })
+                    }
+                </ul>  
+          </div>
       </div>
     );
   }

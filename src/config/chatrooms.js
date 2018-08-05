@@ -2,7 +2,7 @@ module.exports = [
 	
 	{
 		name : 'Hogwarts Hall',
-		image : 'https://2u878v2zya7t3dgei82fads5-wpengine.netdna-ssl.com/wp-content/uploads/2017/09/42a073e32a6d212114c0360827c964cd.jpg';
+		image : 'https://2u878v2zya7t3dgei82fads5-wpengine.netdna-ssl.com/wp-content/uploads/2017/09/42a073e32a6d212114c0360827c964cd.jpg'
 	},
 
 	{
