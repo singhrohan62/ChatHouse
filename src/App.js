@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import socketIOClient from 'socket.io-client'
+import io from 'socket.io-client'
 import './App.css';
+import houses from'./config/houses';
+
+
 
 class App extends Component {
 
@@ -14,7 +17,7 @@ class App extends Component {
   }
 
   send = (color) => {
-      const socket = socketIOClient(this.state.endpoint)
+      const socket = io(this.state.endpoint)
       //console.log(this.state.color)
       socket.emit('change color',color);
   }
@@ -26,7 +29,7 @@ class App extends Component {
 
   render() {
 
-    const socket = socketIOClient(this.state.endpoint);
+    const socket = io(this.state.endpoint);
 
     socket.on('change color', (col) => {
       console.log(col);
@@ -38,6 +41,8 @@ class App extends Component {
         
             <button onClick = {() => this.setColor('blue')}>Change to Blue</button>
             <button onClick = {() => this.setColor('red')}>Change to Red</button>
+
+            <p>houses.name</p>
         
       </div>
     );
