@@ -2,7 +2,7 @@ const server = require('http').createServer();
 const io = require('socket.io')(server);
 
 io.on('connection', socket => {
-	
+	/*
 	socket.on('register', handleRegister)
 
 	socket.on('join', handleJoin)
@@ -13,15 +13,20 @@ io.on('connection', socket => {
 
 	socket.on('chatrooms', handleGetChatrooms)
 
-	socket.on('availableUsers', handleGetAvailableUsers)
+	socket.on('availableUsers', handleGetAvailableUsers)*/
 
 	socket.on('disconnect', () => {
-		console.log('client disconnect ... ', client.id)
-		handleDisconnect()
+		console.log('client disconnect ... ', socket.id)
+		//handleDisconnect()
+	})
+
+	socket.on('change color', (color) => {
+		console.log('Color changed to '+ color)
+		io.sockets.emit('change color',color)
 	})
 
 	socket.on('error', err => {
-		console.log('error recieved from '+ client.id)
+		console.log('error recieved from '+ socket.id)
 		console.log(err)
 	})
 })
