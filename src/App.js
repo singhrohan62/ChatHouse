@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client'
 import './App.css';
+import ChatroomCard from './ChatroomCard';
+import Card from '@material-ui/core/Card';
 import chatrooms from'./config/chatrooms';
 
 
 
 class App extends Component {
 
+ 
+
   constructor() {
     super()
 
     this.state = {
       endpoint : "http://localhost:3000",
-      color : 'white'
+      color : 'white',
+      loggedIn : false
     }
   }
 
@@ -36,18 +41,21 @@ class App extends Component {
       document.body.style.backgroundColor = col
       
     })
-    return (
+
+       return (
       <div>    
           <div className="App">            
                 <button onClick = {() => this.setColor('blue')}>Change to Blue</button>
                 <button onClick = {() => this.setColor('red')}>Change to Red</button>
-                <ul>
-                    {
-                     chatrooms.map(function (room) {
-                      return <li>{room.name}</li>
-                    })
-                    }
-                </ul>  
+                
+                <div className="row">
+                {
+                  chatrooms.map(function (room){
+                  return <ChatroomCard title={room.name} image={room.image}/>
+                })  
+                }
+                </div>
+
           </div>
       </div>
     );
