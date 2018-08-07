@@ -1,13 +1,8 @@
 import React,{ Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 
@@ -24,7 +19,7 @@ const styles = theme => ({
     height: 200,
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
-      height: 100,
+      height: 200,
     },
     '&:hover, &$focusVisible': {
       zIndex: 1,
@@ -86,12 +81,12 @@ const styles = theme => ({
 });
 
 
- class ChatroomCard extends Component {
+ class Chatroom extends Component {
 
  	render () {
  		const {classes} = this.props;
  		return (
-				<div className={classes.root} style={{margin:40+'px'}}>
+				<div className={classes.root} style={{margin:20+'px'}}>
 			      <ButtonBase
 			          focusRipple
 			          key={this.props.title}
@@ -125,9 +120,9 @@ const styles = theme => ({
  	}
 			
 }
-ChatroomCard.propTypes = {
+Chatroom.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ChatroomCard);
+export default withStyles(styles)(Chatroom);
 
