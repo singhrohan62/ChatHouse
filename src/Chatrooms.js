@@ -1,20 +1,21 @@
 import React, {Component} from 'react'
-import Chatroom from './Chatroom'
+import RoomButton from './RoomButton'
 import chatrooms from'./config/chatrooms';
-import {BrowserRouter,Route, Link } from 'react-router-dom';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
 
 class Chatrooms extends Component {
+
 	render () {
 
 			return (
-			<div>
-							chatrooms.map(function (room){
-		                  	return(
-		                  			<Chatroom title={room.name} image={room.image}/>
-		                  		) 
-		                  })
 					
-			</div>
+							chatrooms.map(function (room){
+		                  	return(<RoomButton title={room.name} image={room.image}/>)
+		                  		 
+		                  })
+							
+					
+					
 			)
 	}
 }

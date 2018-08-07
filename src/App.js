@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import io from 'socket.io-client'
 import './App.css';
 import Chatrooms from './Chatrooms';
-import Card from '@material-ui/core/Card';
-
-
 
 class App extends Component {
 
@@ -39,9 +36,9 @@ class App extends Component {
                 <button onClick = {() => this.setColor('red')}>Change to Red</button>
                 
                 <div className="row">
-                
-                  <Chatrooms/>  
-                
+                {
+                  <Chatrooms/>
+                }
                 </div>
 
           </div>
