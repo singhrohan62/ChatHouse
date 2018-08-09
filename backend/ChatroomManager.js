@@ -1,5 +1,5 @@
- Chatroom  =  require('./Chatroom')
- ChatroomTemplates =  require('../src/config/chatrooms');
+ Chatroom = require('./Chatroom');
+ ChatroomTemplates = require('../src/config/chatrooms');
 
 module.exports = function () {
 	const chatrooms = new Map(
