@@ -1,37 +1,51 @@
-const server = require('http').createServer();
-const io = require('socket.io')(server);
+const server = require('http').createServer()
+const io = require('socket.io')(server)
 
-io.on('connection', socket => {
-	/*
-	socket.on('register', handleRegister)
+const ClientManager = require('./ClientManager')
+const ChatroomManager = require('./ChatroomManager')
+const makeHandlers = require('./handlers')
 
-	socket.on('join', handleJoin)
+const clientManager = ClientManager()
+const chatroomManager = ChatroomManager()
 
-	socket.on('leave', handleLeave)
+io.on('connection', function (client) {
+  const {
+    handleRegister,
+    handleJoin,
+    handleLeave,
+    handleMessage,
+    handleGetChatrooms,
+    handleGetAvailableUsers,
+    handleDisconnect
+  } = makeHandlers(client, clientManager, chatroomManager)
 
-	socket.on('message', handleMessage)
+  console.log('client connected...', client.id)
+  clientManager.addClient(client)
 
-	socket.on('chatrooms', handleGetChatrooms)
+  client.on('register', handleRegister)
 
-	socket.on('availableUsers', handleGetAvailableUsers)*/
+  client.on('join', handleJoin)
 
-	socket.on('disconnect', () => {
-		console.log('client disconnect ... ', socket.id)
-		//handleDisconnect()
-	})
+  client.on('leave', handleLeave)
 
-	socket.on('change color', (color) => {
-		console.log('Color changed to '+ color)
-		io.sockets.emit('change color',color)
-	})
+  client.on('message', handleMessage)
 
-	socket.on('error', err => {
-		console.log('error recieved from '+ socket.id)
-		console.log(err)
-	})
+  client.on('chatrooms', handleGetChatrooms)
+
+  client.on('availableUsers', handleGetAvailableUsers)
+
+  client.on('disconnect', function () {
+    console.log('client disconnect...', client.id)
+    handleDisconnect()
+  })
+
+  client.on('error', function (err) {
+    console.log('received error from client:', client.id)
+    console.log(err)
+  })
 })
 
-server.listen(3000, err => {
-	if(err) throw err
-	console.log('listening on port 3000')
+server.listen(3000, function (err) {
+  if (err) throw err
+  console.log('listening on port 3000')
 })

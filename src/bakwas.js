@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
+import users from './config/users'
 
-class Chatroom extends Component {
+class bakwas extends Component {
 
 	constructor() {
 		super()
@@ -15,9 +16,9 @@ class Chatroom extends Component {
 	render () {
 		const {classes} = this.props;
  		return (
-				<h3>Dfddf</h3>		
+				<div></div>		
  			);
 	}
 }
 
-export default Chatroom;
+export default bakwas;

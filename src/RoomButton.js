@@ -6,13 +6,16 @@ import Typography from '@material-ui/core/Typography';
 
 import ButtonBase from '@material-ui/core/ButtonBase';
 
+import Chatroom from './Chatroom';
+import App from './App';
+import bakwas from './bakwas'
 
 const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     minWidth: 300,
-    width: '100%',
+    width: '100vw',
   },
 
   image: {
@@ -84,10 +87,24 @@ const styles = theme => ({
 
  class ChatroomCard extends Component {
 
- 	render () {
- 		const {classes} = this.props;
+ 	constructor() {
+ 		super()
+
+ 		this.state = {
+ 			isButtonClicked : false,
+ 		}
+ 	}
+
+ 	renderChatroom  = () => {
  		return (
-				<div className={classes.root} style={{margin:20+'px'}}>
+ 				<div><bakwas/></div>
+ 			)
+ 	}
+
+ 	renderChatroomOptions = (classes) => {
+ 		return (
+ 				<div className={classes.root} style={{marginTop:20+'px'}}>
+			      
 			      <ButtonBase
 			          focusRipple
 			          key={this.props.title}
@@ -96,6 +113,7 @@ const styles = theme => ({
 			          style={{
 			            width: '100%',
 			          }}
+			          onClick = { () => this.setState({isButtonClicked :  true})}
 			        >
 			          <span
 			            className={classes.imageSrc}
@@ -116,8 +134,23 @@ const styles = theme => ({
 			            </Typography>
 			          </span>
 			        </ButtonBase>
-			    </div>					
- 			);
+			        
+			    </div>
+ 			)
+ 	}
+
+ 	render () {
+ 		const {classes} = this.props;
+
+ 		if(!this.state.isButtonClicked)
+ 		{
+ 			return this.renderChatroomOptions(classes);
+ 		}
+
+ 		else 
+ 		{
+ 			return this.renderChatroom();
+ 		}
  	}
 			
 }

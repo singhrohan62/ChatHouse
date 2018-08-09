@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import io from 'socket.io-client'
 import './App.css';
 import Chatrooms from './Chatrooms';
+import {BrowserRouter as Router,Switch, Route, Link,Redirect} from 'react-router-dom';
+import Chatroom from './Chatroom'
+import bakwas from './bakwas'
+import Button from '@material-ui/core/Button';
 
 class App extends Component {
 
@@ -34,15 +38,30 @@ class App extends Component {
           <div className="App">            
                 <button onClick = {() => this.setColor('blue')}>Change to Blue</button>
                 <button onClick = {() => this.setColor('red')}>Change to Red</button>
-                
-                <div className="row">
-                {
-                  <Chatrooms/>
-                }
-                </div>
+                <Router>
+                  <div>
+                    <ul>
+                          <div className="row">
+                        <Link to="/ad"><Chatrooms/></Link>
+                       
+                          </div>
+                           <Link to="/"><Button onClick = {() => this.setState({isChatroomSelected : true})}>Gotp</Button></Link>
+                    </ul>
+                        <Switch>
+                        <Route exact path="/ad" component={Chatrooms} />
+                        <Route path="/" component={bakwas}/>
+                        </Switch> 
+                  </div>
+                </Router>
 
           </div>
       </div>
+    )
+  }
+
+  rendersChat = () => {
+    return (
+      <bakwas/>
     )
   }
 
@@ -59,8 +78,12 @@ class App extends Component {
     {
       return this.rendersChatroom()
     }
+
+    else {
+      return this.rendersChat()
       
   }
+    }
 }
 
 export default App;
