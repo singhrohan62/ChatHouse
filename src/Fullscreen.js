@@ -6,3 +6,4 @@ export default styles.div`
 	opacity : ${props => props.opacity};
 
 `
+
