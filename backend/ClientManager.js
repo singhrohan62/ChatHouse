@@ -1,22 +1,22 @@
 const userTemplates = require('../src/config/users')
 
 module.exports = function () {
-	
-	const clients = new Map()
+  // mapping of all connected clients
+  const clients = new Map()
 
-	function addClient(client) {
-		clients.set(client.id, {client})
-	}
+  function addClient(client) {
+    clients.set(client.id, { client })
+  }
 
-	function registerClient(client, user) {
-		clients.set(client.id, {client, user})
-	}
+  function registerClient(client, user) {
+    clients.set(client.id, { client, user })
+  }
 
-	function removeClient(client) {
-		clients.delete(client.id)
-	}
+  function removeClient(client) {
+    clients.delete(client.id)
+  }
 
-	function getAvailableUsers() {
+  function getAvailableUsers() {
     const usersTaken = new Set(
       Array.from(clients.values())
         .filter(c => c.user)
@@ -26,8 +26,8 @@ module.exports = function () {
       .filter(u => !usersTaken.has(u.name))
   }
 
-  function isUserAvailable(uerName) {
-  	return getAvailableUsers().some(u => u.name === username)
+  function isUserAvailable(userName) {
+    return getAvailableUsers().some(u => u.name === userName)
   }
 
   function getUserByName(userName) {

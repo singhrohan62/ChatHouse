@@ -1,30 +1,27 @@
-module.exports = function ({name, image}) {
-	
-	const members = new Map()
+module.exports = function ({ name, image }) {
+  const members = new Map()
+  let chatHistory = []
 
-	chatHistory = []
+  function broadcastMessage(message) {
+    members.forEach(m => m.emit('message', message))
+  }
 
-	function broadcastMessage(message) {
-		members.forEach(m => m.emit('message',message))
-	}
+  function addEntry(entry) {
+    chatHistory = chatHistory.concat(entry)
+  }
 
-	function addEntry(entry) {
-		chatHistory.concat(entry)
-	}
+  function getChatHistory() {
+    return chatHistory.slice()
+  }
 
-	function getChatHistory() {
-		chatHistory.splice()
-	}
+  function addUser(client) {
+    members.set(client.id, client)
+  }
 
-	function addUser(client) {
-		members.set(client.id, client)
-	}
+  function removeUser(client) {
+    members.delete(client.id)
+  }
 
-	function removeUser(client) {
-		members.delete(client.id)
-	}
-
-	
   function serialize() {
     return {
       name,
@@ -33,11 +30,12 @@ module.exports = function ({name, image}) {
     }
   }
 
-	return (
-			broadcastMessage,
-			addEntry,
-			addUser,
-			removeUser,
-			serialize
-		)
+  return {
+    broadcastMessage,
+    addEntry,
+    getChatHistory,
+    addUser,
+    removeUser,
+    serialize
+  }
 }

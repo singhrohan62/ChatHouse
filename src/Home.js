@@ -1,16 +1,20 @@
-import React, {Component} from 'react'
-import ChatroomPreview from './ChatroomPreview';
+import React from 'react';
 
-class Home extends React.Component{
+import ChatroomPreview from './ChatroomPreview'
 
-
-	render () {
-		return (
-				<div>
-				<ChatroomPreview />
-				</div>
-			)
-	}
-}
-
-export default Home;
+export default ({
+  chatrooms,
+  onEnterChatroom
+}) => (
+  <div>
+    {
+      chatrooms.map(chatroom => (
+        <ChatroomPreview
+          key={chatroom.name}
+          chatroom={chatroom}
+          onEnter={() => onEnterChatroom(chatroom.name)}
+        />
+      ))
+    }
+  </div>
+)

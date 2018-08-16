@@ -47,5 +47,5 @@ io.on('connection', function (client) {
 
 server.listen(4001, function (err) {
   if (err) throw err
-  console.log('listening on port 3000')
+  console.log('listening on port 4001')
 })
