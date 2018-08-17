@@ -4,10 +4,19 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem'
 import Avatar from '@material-ui/core/Avatar';
-
+import PropTypes from 'prop-types'
 import Loader from './Loader'
+import { withStyles } from '@material-ui/core/styles'
 
-export default class UserSelection extends React.Component {
+ const styles = theme => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+});
+
+ class UserSelection extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -19,6 +28,7 @@ export default class UserSelection extends React.Component {
 
     this.props.getAvailableUsers((err, availableUsers) => {
       this.setState({ availableUsers })
+      console.log(availableUsers)
     })
   }
 
@@ -39,6 +49,8 @@ export default class UserSelection extends React.Component {
   }
 
   render() {
+
+    const {classes} = this.props;
     const actions = [
       <Button
         label="Cancel"
@@ -48,6 +60,7 @@ export default class UserSelection extends React.Component {
     ]
 
     return (
+      <div className = {classes.root}>
       <Dialog
         title="Pick your character."
         actions={actions}
@@ -65,6 +78,13 @@ export default class UserSelection extends React.Component {
             )
         }
       </Dialog>
+      </div>
     )
   }
 }
+
+  UserSelection.propTypes = {
+    classes :  PropTypes.object.isRequired,
+  }
+
+export default withStyles(styles)(UserSelection);

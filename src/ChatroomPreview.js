@@ -9,10 +9,10 @@ const Wrapper = styled.div`
   cursor: pointer;
 `
 
-const getCardTitleStyle = () => ({
+/*const getCardTitleStyle = () => ({
   display: 'flex',
   alignItems: 'center'
-})
+})*/
 
 export default ({ chatroom, onEnter }) => (
   <Paper

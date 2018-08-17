@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Avatar from '@material-ui/core/Avatar';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 
 import FullScreen from './Fullscreen';
 
@@ -70,13 +70,13 @@ function renderAvatar(user) {
   const props = user
     ? { src: user.image }
     : {
-      ListItemIcon:
-      <ListItemIcon
+      AccountCircleIcon:
+      <AccountCircleIcon
         style={{ fontSize: 96 }}
-        className="material-ListItemIcons"
+        className="material-AccountCircleIcons"
       >
         {'perm_identity'}
-      </ListItemIcon>
+      </AccountCircleIcon>
     }
 
   return <Avatar size={160} {...props} />
