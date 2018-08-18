@@ -71,8 +71,8 @@ function renderAvatar(user, theme) {
   const props = user
     ? { src: user.image }
     : {
-        AccountCircleIcon:
-        <AccountCircleIcon style={{ fontSize: 96,color:"#222"}} />
+        children:
+        <AccountCircleIcon style={{ fontSize: 96,color:"#222"}} /> 
       }
 
   return <Avatar style={{width : 90, height : 90}} {...props} />
