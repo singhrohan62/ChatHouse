@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #888;
   font-family: sans-serif;
+  background : url('http://hddesktopwallpapers.in/wp-content/uploads/2015/07/harry-potter-wallpaper-deathly-hallows.jpg');
+  background-repeat: repeat-y;
 }

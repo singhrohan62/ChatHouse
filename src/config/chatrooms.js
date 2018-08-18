@@ -2,16 +2,16 @@ module.exports = [
 	
 	{
 		name : 'Hogwarts Hall',
-		image : 'https://2u878v2zya7t3dgei82fads5-wpengine.netdna-ssl.com/wp-content/uploads/2017/09/42a073e32a6d212114c0360827c964cd.jpg'
+		image : 'https://www.blueskytraveler.com/wp-content/uploads/2015/01/Oxford.ChristChurch.GreatHall.jpg?66fabb&66fabb'
 	},
 
 	{
 		name : 'Diagon Alley',
-		image : 'https://timedotcom.files.wordpress.com/2017/05/170518-universal-studios-cost-wizarding-world-harry-potter-diagon-alley.jpg?quality=85'
+		image : 'https://www.wbstudiotour.co.uk/sites/default/files/2018-01/Diagon-Alley.jpg'
 	},
 
 	{
 		name : 'Hogwarts Station',
-		image : 'https://hips.hearstapps.com/sev.h-cdn.co/assets/15/36/1024x687/gallery-1441130300-hogwartsexpress.png?resize=768:*'
+		image : 'http://universal.wdwinfo.com/wp-content/uploads/2014/08/WDWINFO-Universal-Diagon-Alley-Harry-Potter-Hogwarts-Express-020.jpg'
 	}
 ]

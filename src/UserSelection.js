@@ -12,7 +12,7 @@ import { withStyles } from '@material-ui/core/styles'
  const styles = theme => ({
   root: {
     width: '100%',
-    maxWidth: 460,
+    maxWidth: 600,
     backgroundColor: theme.palette.background.paper,
   },
 });
@@ -39,7 +39,7 @@ import { withStyles } from '@material-ui/core/styles'
 
   renderUserItems() {
     return this.state.availableUsers.map(user => (
-      <ListItem onClick={() => this.handleSelection(user)} key={user.name}>
+      <ListItem dense button onClick={() => this.handleSelection(user)} key={user.name}>
         <ListItemText primary={user.name} secondary={user.statusText}/>
           <Avatar src={user.image} alt={user.name} />
       </ListItem>
