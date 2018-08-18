@@ -71,19 +71,15 @@ function renderAvatar(user, theme) {
   const props = user
     ? { src: user.image }
     : {
-      AccountCircleIcon:
-      <AccountCircleIcon
-        style={{ fontSize: 96, }}
-      >
-        {'perm_identity'}
-      </AccountCircleIcon>
-    }
+        AccountCircleIcon:
+        <AccountCircleIcon style={{ fontSize: 96,color:"#222"}} />
+      }
 
-  return <AccountCircleIcon size={160} {...props} />
+  return <Avatar style={{width : 90, height : 90}} {...props} />
 }
 
 function fullName(user) {
-  return user ? `${user.name} ${user.lastName}` : 'Who are you?'
+  return user ? `${user.name}` : 'Choose A Wizard'
 }
 
 export default ({ children, user }) => (
