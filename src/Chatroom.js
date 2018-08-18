@@ -9,8 +9,8 @@ import ListItem  from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import CloseIcon from "@material-ui/icons/Close";
 import SendIcon from '@material-ui/icons/Send';
-import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import blue from '@material-ui/core/colors/blue';
 import classNames from 'classnames';
 
@@ -177,13 +177,9 @@ const Scrollable = styled.div`
             <Button
               variant="contained"
               color="primary"
-              children={
-                <ListItemIcon
-                  style={{ fontSize: 24 }}><SendIcon/></ListItemIcon>
-                  }
               onClick={this.props.onLeave}
               className={classNames(classes.margin, classes.cssRoot)}>
-              Custom CSS
+              <CloseIcon/>
             </Button>
           </Header>
           <ChatroomImage
@@ -235,7 +231,7 @@ const Scrollable = styled.div`
                 style={{ marginLeft: 20 }}
               >
                 <ListItemIcon>
-                  <ChatBubbleOutlineIcon style={{ fontSize: 32 }} />
+                  <SendIcon style={{ fontSize: 32 }} />
                 </ListItemIcon>
               </Button>
             </InputPanel>
