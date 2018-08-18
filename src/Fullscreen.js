@@ -5,6 +5,6 @@ export default styles.div`
 	width : 100vw;
 	background : ${props => props.background};
 	opacity : ${props => props.opacity};
-	background-repeat : no-repeat;
+	background-repeat : repeat-y;
 `
 

@@ -101,12 +101,5 @@ export default ({ children, user }) => (
         </Content>
       </Center>
     </ContentWrapper>
-    <FullScreen>
-      <BackgroundImage src="background.jpg" />
-      <FullScreen
-        opacity={0.4}
-        background="#212121"
-      />
-    </FullScreen>
   </FullScreen>
 )
