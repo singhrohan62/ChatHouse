@@ -7,7 +7,32 @@ import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import ListItem  from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List'
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import SendIcon from '@material-ui/icons/Send';
+import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
+import blue from '@material-ui/core/colors/blue';
+import classNames from 'classnames';
+
 import FullScreen from './Fullscreen';
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    maxWidth: '360px',
+    backgroundColor: theme.palette.background.paper,
+  },
+   margin: {
+    margin: theme.spacing.unit,
+  },
+  cssRoot: {
+    color: theme.palette.getContrastText(blue[500]),
+    backgroundColor: blue[500],
+    '&:hover': {
+      backgroundColor: blue[700],
+    },
+  },
+});
 
 const ChatWindow = styled.div`
   position: relative;
@@ -78,7 +103,7 @@ const Scrollable = styled.div`
   overflow: auto;
 `
 
-export default class Chatroom extends React.Component {
+ class Chatroom extends React.Component {
   constructor(props, context) {
     super(props, context)
 
@@ -141,6 +166,7 @@ export default class Chatroom extends React.Component {
   }
 
   render() {
+    const {classes} = this.props;
     return (
       <div style={{ height: '100%' }}>
         <ChatWindow>
@@ -149,17 +175,16 @@ export default class Chatroom extends React.Component {
               { this.props.chatroom.name }
             </Title>
             <Button
-              primary
-              ListItemIcon={
+              variant="contained"
+              color="primary"
+              children={
                 <ListItemIcon
-                  style={{ fontSize: 24 }}
-                  className="material-ListItemIcons"
-                >
-                  {'close'}
-                </ListItemIcon>
-              }
+                  style={{ fontSize: 24 }}><SendIcon/></ListItemIcon>
+                  }
               onClick={this.props.onLeave}
-            />
+              className={classNames(classes.margin, classes.cssRoot)}>
+              Custom CSS
+            </Button>
           </Header>
           <ChatroomImage
             src={this.props.chatroom.image}
@@ -175,7 +200,7 @@ export default class Chatroom extends React.Component {
                         <ListItem
                           key={i}
                           style={{ color: '#fafafa' }}
-                          leftAvatar={<Avatar src={user.image} />}
+                          children={<Avatar src={user.image} />}
                           primaryText={`${user.name} ${event || ''}`}
                           secondaryText={
                             message &&
@@ -209,11 +234,8 @@ export default class Chatroom extends React.Component {
                 onClick={this.onSendMessage}
                 style={{ marginLeft: 20 }}
               >
-                <ListItemIcon
-                  style={{ fontSize: 32 }}
-                  className="material-ListItemIcons"
-                >
-                  {'chat_bubble_outline'}
+                <ListItemIcon>
+                  <ChatBubbleOutlineIcon style={{ fontSize: 32 }} />
                 </ListItemIcon>
               </Button>
             </InputPanel>
@@ -227,3 +249,9 @@ export default class Chatroom extends React.Component {
     )
   }
 }
+
+ Chatroom.propTypes = {
+    classes :  PropTypes.object.isRequired,
+  }
+
+export default withStyles(styles)(Chatroom);

@@ -105,7 +105,7 @@ export default ({ children, user }) => (
       <BackgroundImage src="background.jpg" />
       <FullScreen
         opacity={0.4}
-        background="url('http://7-themes.com/data_images/collection/6/4475049-harry-potter-wallpapers.jpg')"
+        background="#212121"
       />
     </FullScreen>
   </FullScreen>
