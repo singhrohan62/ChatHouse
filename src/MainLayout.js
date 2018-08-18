@@ -66,20 +66,20 @@ const UserName = styled.p`
   color: #fafafa;
 `
 
-function renderAvatar(user) {
+function renderAvatar(user, theme) {
+
   const props = user
     ? { src: user.image }
     : {
       AccountCircleIcon:
       <AccountCircleIcon
-        style={{ fontSize: 96 }}
-        className="material-AccountCircleIcons"
+        style={{ fontSize: 96, }}
       >
         {'perm_identity'}
       </AccountCircleIcon>
     }
 
-  return <Avatar size={160} {...props} />
+  return <AccountCircleIcon size={160} {...props} />
 }
 
 function fullName(user) {

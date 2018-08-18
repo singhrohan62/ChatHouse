@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem'
 import Avatar from '@material-ui/core/Avatar';
+import ListItemText from '@material-ui/core/ListItemText';
 import PropTypes from 'prop-types'
 import Loader from './Loader'
 import { withStyles } from '@material-ui/core/styles'
@@ -11,7 +12,7 @@ import { withStyles } from '@material-ui/core/styles'
  const styles = theme => ({
   root: {
     width: '100%',
-    maxWidth: 360,
+    maxWidth: 460,
     backgroundColor: theme.palette.background.paper,
   },
 });
@@ -38,13 +39,10 @@ import { withStyles } from '@material-ui/core/styles'
 
   renderUserItems() {
     return this.state.availableUsers.map(user => (
-      <ListItem
-        onClick={() => this.handleSelection(user)}
-        primaryText={user.name}
-        secondaryText={user.statusText}
-        key={user.name}
-        leftAvatar={<Avatar src={user.image} alt="" />}
-      />
+      <ListItem onClick={() => this.handleSelection(user)} key={user.name}>
+        <ListItemText primary={user.name} secondary={user.statusText}/>
+          <Avatar src={user.image} alt={user.name} />
+      </ListItem>
     ))
   }
 
@@ -60,7 +58,7 @@ import { withStyles } from '@material-ui/core/styles'
     ]
 
     return (
-      <div className = {classes.root}>
+      
       <Dialog
         title="Pick your character."
         actions={actions}
@@ -72,13 +70,15 @@ import { withStyles } from '@material-ui/core/styles'
           !this.state.availableUsers
             ? <Loader />
             : (
+              <div className = {classes.root}>
               <List>
                 { this.renderUserItems() }
               </List>
+              </div>
             )
         }
       </Dialog>
-      </div>
+      
     )
   }
 }
