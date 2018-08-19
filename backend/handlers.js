@@ -60,7 +60,7 @@ module.exports = function (client, clientManager, chatroomManager) {
   }
 
   function handleJoin(chatroomName, callback) {
-    const createEntry = () => ({ event: `joined ${chatroomName}` })
+    const createEntry = () => ({ event: `went to ${chatroomName}` })
 
     handleEvent(chatroomName, createEntry)
       .then(function (chatroom) {

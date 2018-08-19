@@ -111,7 +111,7 @@ import socket from './socket';
   }
 
   renderChatroom  = (chatroom) => {
-    document.body.style.background = `url(${chatroom.image}) repeat-y`
+   // document.body.style.background = `url(${chatroom.image}) repeat-y`
     return (
 
                         <Route
