@@ -2,19 +2,28 @@ import React from 'react';
 import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import ListItemIcon from '@material-ui/core/ListItemIcon'; 
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText'
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import ListItem  from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List'
+import List from '@material-ui/core/List';
+import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CloseIcon from "@material-ui/icons/Close";
 import SendIcon from '@material-ui/icons/Send';
 import blue from '@material-ui/core/colors/blue';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
 import FullScreen from './Fullscreen';
+
+const darkTheme = createMuiTheme({
+  palette: {
+    type: 'dark', // Switching the dark mode on is a single property value change.
+  },
+});
 
 const styles = theme => ({
   root: {
@@ -31,6 +40,9 @@ const styles = theme => ({
     '&:hover': {
       backgroundColor: blue[700],
     },
+    inputProps: {
+      textColor : '#fafafa',
+    }
   },
 });
 
@@ -39,6 +51,7 @@ const ChatWindow = styled.div`
   display: inline-flex;
   flex-direction: column;
   justify-content: flex-end;
+  color: #fafafa !important;
   height: 100%;
   width: 420px;
   box-sizing: border-box;
@@ -89,12 +102,14 @@ const InputPanel = styled.div`
   align-items: center;
   padding: 20px;
   align-self: center;
+  color: #fafafa !important;
   border-top: 1px solid #fafafa;
 `
 
 const ChatroomImage = styled.img`
   position: absolute;
   top: 0;
+  opacity : 0.4;
   width: 100%;
 `
 
@@ -111,7 +126,7 @@ const Scrollable = styled.div`
 
     this.state = {
       chatHistory,
-      input: ''
+      input: '',
     }
 
     this.onInput = this.onInput.bind(this)
@@ -168,6 +183,7 @@ const Scrollable = styled.div`
   render() {
     const {classes} = this.props;
     return (
+      <MuiThemeProvider theme={darkTheme}>
       <div style={{ height: '100%' }}>
         <ChatWindow>
           <Header>
@@ -196,15 +212,11 @@ const Scrollable = styled.div`
                         <ListItem
                           key={i}
                           style={{ color: '#fafafa' }}
-                          children={<Avatar src={user.image} />}
-                          primaryText={`${user.name} ${event || ''}`}
-                          secondaryText={
-                            message &&
-                            <OutputText>
-                              { message }
-                            </OutputText>
-                          }
-                        />
+                          >
+                          <Avatar src={user.image} />
+                          <ListItemText primary={`${user.name} ${event || ''}`} 
+                          secondary={message && <OutputText> { message } </OutputText>}/>
+                        </ListItem>
                       </NoDots>,
                       <Divider inset />
                     ]
@@ -217,11 +229,11 @@ const Scrollable = styled.div`
                 textareaStyle={{ color: '#fafafa' }}
                 hintStyle={{ color: '#fafafa' }}
                 floatingLabelStyle={{ color: '#fafafa' }}
-                hintText="Enter a message."
-                floatingLabelText="Enter a message."
-                multiLine
-                rows={4}
-                rowsMax={4}
+                label="Enter a message."
+                inputProps = {classes.inputProps}
+                multiline
+                rows={1}
+                rowsMax={2}
                 onChange={this.onInput}
                 value={this.state.input}
                 onKeyPress={e => (e.key === 'Enter' ? this.onSendMessage() : null)}
@@ -242,6 +254,7 @@ const Scrollable = styled.div`
           />
         </ChatWindow>
       </div>
+      </MuiThemeProvider>
     )
   }
 }
