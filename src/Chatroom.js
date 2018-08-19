@@ -8,7 +8,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import ListItem  from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
-import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CloseIcon from "@material-ui/icons/Close";
