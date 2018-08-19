@@ -32,13 +32,6 @@ const Content = styled.div`
   height: 100%;
 `
 
-const BackgroundImage = styled.div`
-  background: url(${props => props.src}) no-repeat center center fixed;
-  background-size: cover;
-  height: 100%;
-  overflow: hidden;
-`
-
 const AvatarWrapper = styled.div`
 cursor: pointer;
   display: flex;
